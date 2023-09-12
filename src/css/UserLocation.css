@@ -1,0 +1,38 @@
+.ui.button,
+.location.arrow.icon {
+    background-color: darkseagreen;
+    color: white;
+}
+.ui.header{
+    color: darkseagreen
+}
+
+.form-section{
+    position: relative;
+    z-index: 1;
+}
+
+.pac-item{
+    padding:10px;
+    font-size:16px;
+    cursor:pointer;
+}
+
+#map {
+    position: absolute;
+    top:0;
+    right:0;
+    bottom:0;
+    left:0;
+    background: darkseagreen;
+
+}
+
+.pac-item-query {
+    font-size: 16px;
+}
+
+p{
+    line-height: 5px;
+    font-size: 12px;
+}
