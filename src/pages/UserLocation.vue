@@ -51,14 +51,9 @@
 <script>
 
 import axios from 'axios'
-// import dotenv from 'dotenv';
+
 import SearchedList from '../components/SearchedList.vue'
 
-// const config = dotenv.config();
-
-//   console.log('Could not load env file', config.error)
-
-console.log("123", process.env.VUE_APP_GOOGLE_API_KEY)
 export default{
     name: "userLocation",
     components:{
@@ -133,7 +128,7 @@ export default{
                 this.showLocationOnMap()
             }else {
                 axios
-                .get("https://maps.googleapis.com/maps/api/geocode/json?address=" + address + "&key=" + process.env.VUE_APP_GOOGLE_API_KEY)
+                .get("https://maps.googleapis.com/maps/api/geocode/json?address=" + address + "&key=" + process.env.plugins.definitions.GOOGLE_API_KEY)
                 .then(response => {
                     if(response.data.status === "ZERO_RESULTS"){
                         this.error = "Please enter a valid address"
@@ -154,7 +149,7 @@ export default{
             this.spinner = true
 
             axios
-                .get("https://maps.googleapis.com/maps/api/geocode/json?latlng=" + lat + "," + long + "&key=" + process.env.VUE_APP_GOOGLE_API_KEY)
+                .get("https://maps.googleapis.com/maps/api/geocode/json?latlng=" + lat + "," + long + "&key=" + process.env.plugins.definitions.GOOGLE_API_KEY)
                 .then(response => {
                     if(response){
                         this.address = response.data.results[0].formatted_address
@@ -176,7 +171,7 @@ export default{
             var targetDate = new Date()
             var timestamp = targetDate.getTime()/1000 + targetDate.getTimezoneOffset() * 60
             axios
-                .get("https://maps.googleapis.com/maps/api/timezone/json?location="+ lat + "," + lng + "&timestamp=" + timestamp + "&key=" + process.env.VUE_APP_GOOGLE_API_KEY)
+                .get("https://maps.googleapis.com/maps/api/timezone/json?location="+ lat + "," + lng + "&timestamp=" + timestamp + "&key=" + process.env.plugins.definitions.GOOGLE_API_KEY)
                 .then(response => {
                     if(response.data.status === "OK"){
                         this.timeZone = response.data.timeZoneId + " (" + response.data.timeZoneName + ")"
